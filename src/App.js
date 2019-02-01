@@ -5,6 +5,7 @@ import TetrisCanvas from './Components/TetrisCanvas'
 class App extends Component {
   render() {
     return (
+
       <div className="App">
         <TetrisCanvas/>
       </div>
