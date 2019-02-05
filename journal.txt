@@ -1,0 +1,35 @@
+this when i tried to use p5 but i decided that canvas was better
+
+// this.sketch = new p5(p => {
+//   console.log(p);
+//
+//
+//   p.setup = () => {
+//     p.createCanvas(400, 500).parent(this.renderRef.current)
+//   }
+//
+//
+//   p.draw = () => {
+//     let piece = createPeace("T")
+//     piece.forEach((row,y) => {
+//       row.forEach((value,x)=> {
+//         if (value !== 0) {
+//           p.background(0)
+//           p.fill("red")
+
+          // p.piece(this.state.x,this.state.y)
+    //     }
+    //   })
+    // })
+    // console.log(piece)
+    // p.background(0, 25,25)
+    // p.fill('red')
+    // p.circle(this.state.x,this.state.y,50,50)
+//   }
+//
+//   setInterval(()=> this.setState({
+//     y: this.state.y + 1
+//   }),10)
+//
+//
+// })
