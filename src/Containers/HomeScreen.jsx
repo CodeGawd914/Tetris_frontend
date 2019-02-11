@@ -10,13 +10,13 @@ class HomeScreen extends Component {
       <br></br>
       <Button.Group vertical>
         <Link to="/Login">
-          <Button size='massive'> Login </Button>
+          <Button color="red" size='massive'> Login </Button>
         </Link><br></br>
         <Link to="/SignUp">
-          <Button size='massive'> SignUp </Button>
+          <Button color='olive' size='massive'> SignUp </Button>
         </Link><br></br>
         <Link to="/LocalMode">
-          <Button size='massive'> Local Mode </Button>
+          <Button color='orange' size='massive'> Local Mode </Button>
         </Link><br></br>
       </Button.Group>
       </div>

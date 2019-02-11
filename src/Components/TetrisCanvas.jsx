@@ -3,7 +3,7 @@ import p5 from 'p5'
 import {createPeace} from '../shapes'
 import {connect} from 'react-redux'
 import {matrixBag} from '../shapesAgain'
-
+import {Button} from 'semantic-ui-react'
 
 
 
@@ -42,7 +42,6 @@ class TetrisCanvas extends Component {
   }
 
   checkCollision = ()=> {
-    console.log("laughing at arena", this.state.arena);
     for (let y = 0; y < this.state.matrix.length; ++y){
       for (let x = 0; x < this.state.matrix[y].length; ++x){
 
@@ -56,7 +55,6 @@ class TetrisCanvas extends Component {
       }
     }
     return false
-    console.log("heywassup");
   }
 
   mergeBlocks =(arena)=> {
@@ -75,6 +73,7 @@ class TetrisCanvas extends Component {
       window.alert("ha ha uyou lose bet you didnt see that coming ")
       let arena = this.createMatrix(20,35)
       console.log("WAIT YOU NEED ME TO TEST ", this.state.arena.forEach(row => row.fill(0)))
+      // this.props.handleScore(this.state.score)
       this.setState({
         arena: arena,
         score: 0
@@ -86,7 +85,6 @@ class TetrisCanvas extends Component {
     const shapes = ["I","T","O","L","J","Z","S"]
     let randomShapes = shapes[Math.floor(Math.random() * shapes.length)]
     let piece = createPeace(randomShapes)
-    console.log("checkPIECE",piece,randomShapes);
     this.mergeBlocks(this.state.arena)
     this.arenaClear()
     this.setState({
@@ -165,12 +163,10 @@ class TetrisCanvas extends Component {
         pos: {...this.state.pos, y: this.state.pos.y+1}
       },() => {
         this.draw()
-      }),500)
+      }),300)
     }
 
     update=(ctx)=>{
-      console.log("this arena");
-
           this.draw()
           this.dropMatrix(ctx)
 
@@ -213,7 +209,7 @@ class TetrisCanvas extends Component {
     const ctx = canvas.getContext("2d")
     const arena = this.createMatrix(20,35)
 
-    this.setState({arena},()=> console.log("looking at this", arena))
+    this.setState({arena})
 
     canvas.addEventListener("keydown",(e)=> console.log(e))
     // ctx.clearRect(0,0,20,20)
@@ -247,18 +243,19 @@ onKeyPressed =(e,ctx)=> {
 
 
   render() {
-    console.log(this.state, "render");
     this.renderRef = React.createRef()
 
     return (
 
       <div
         >
+        <Button basic color ='red'>
         Your Total Score{this.state.score}
+        </Button>
        <canvas
-        tabindex='1'
+        tabIndex='1'
         onKeyDown={(e) => this.onKeyPressed(e)}
-        ref="canvas" width={400} height={700} style={{"border":"1px solid #900;"}}/>
+        ref="canvas" width={400} height={700} style={{"border":"1px solid #999"}}/>
       </div>
     );
   }

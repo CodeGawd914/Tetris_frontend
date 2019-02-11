@@ -7,14 +7,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import tetrisReducer from './redux/reducer'
 import {BrowserRouter} from 'react-router-dom'
+import { ActionCableProvider } from 'react-actioncable-provider'
+import { API_WS_ROOT } from './Constants';
+
+
 
 const store = createStore(tetrisReducer)
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ActionCableProvider url={API_WS_ROOT}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ActionCableProvider>
   </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

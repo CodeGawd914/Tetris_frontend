@@ -7,6 +7,19 @@
   height: 40vmin;
 }
 
+.myVideo{
+position: fixed;
+right: 0;
+bottom: 0;
+top: 0;
+left: 0;
+object-fit: cover;
+width: 100%;
+min-height: 100%;
+z-index: -99;
+opacity: .50;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
