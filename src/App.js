@@ -9,6 +9,9 @@ import SignUp from './Components/SignUp'
 import HomeScreen from './Containers/HomeScreen'
 import UserScreen from './Containers/UserScreen'
 import GameContainer from './Containers/GameContainer'
+import ActionCableProvider from 'react-actioncable-provider'
+import {API_WS_ROOT}from './Constants'
+
 // import Background from './Components/Background'
 
 
@@ -134,7 +137,10 @@ class App extends Component {
       component={TetrisCanvas}/>
       <Route
       exact path="/MultiGame"
-      render={()=> <GameContainer user={this.state.user}/>
+      render={()=>
+        <ActionCableProvider url={API_WS_ROOT}>
+          <GameContainer user={this.state.user}/>
+        </ActionCableProvider>
       }/>
       <Route
       exact path="/userMain"

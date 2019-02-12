@@ -63,7 +63,6 @@ class Conversations extends React.Component {
           handleReceivedMessage={this.handleReceivedMessage}
         />
       ) : null}
-      <TetrisCanvas/>
       <h2>Conversations</h2>
       <ul>{mapConversations(conversations, this.handleClick)}</ul>
       <NewConversationForm />

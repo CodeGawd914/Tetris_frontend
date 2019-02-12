@@ -7,14 +7,20 @@ class GameContainter extends Component {
 
   render() {
     return (
-      <Grid>
-        <Grid.Column floated='left' width={5}>
-            <TetrisCanvas/>
-        </Grid.Column>
-        <Grid.Column floated='right' width={5}>
-            <Conversations user={this.props.user}/>
-        </Grid.Column>
-      </Grid>
+      <React.Fragment>
+      {localStorage.getItem("token")
+        ?   <Grid>
+              <Grid.Column floated='left' width={5}>
+                <TetrisCanvas/>
+              </Grid.Column>
+              <Grid.Column floated='right' width={5}>
+                <Conversations user={this.props.user}/>
+              </Grid.Column>
+            </Grid>
+        : null
+      }
+
+      </React.Fragment>
 
     );
   }
