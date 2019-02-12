@@ -44,7 +44,6 @@ class TetrisCanvas extends Component {
   checkCollision = ()=> {
     for (let y = 0; y < this.state.matrix.length; ++y){
       for (let x = 0; x < this.state.matrix[y].length; ++x){
-
         if(this.state.matrix[y][x] !== 0 && (this.state.arena[y + this.state.pos.y] && this.state.arena[y + this.state.pos.y][x+this.state.pos.x]) !== 0){
           return true
           // this.setState({
