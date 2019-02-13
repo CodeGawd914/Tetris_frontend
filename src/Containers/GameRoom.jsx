@@ -1,12 +1,12 @@
 import React from 'react'
-import { ActionCable } from 'react-actioncable-provider'
+import { ActionCableConsumer } from 'react-actioncable-provider'
 import { API_ROOT } from '../Constants'
 
 import Cable from '../Components/Cables'
 
-class Gameroom extends React.Component {
+class GameRoom extends React.Component {
 
-  state {
+  state = {
 
   }
 
@@ -18,7 +18,15 @@ class Gameroom extends React.Component {
 
   render(){
     return (
+      <div>
+      <ActionCableConsumer
+        channel={{ channel: 'GameroomChannel' }}
+        onReceived={this.handleReceivedGame}
+      />
+      </div>
 
     )
   }
 }
+
+export default GameRoom

@@ -98,6 +98,9 @@ class App extends Component {
             user: resp.user
        })
      })
+     if (this.state.user){
+       this.props.history.push('/userMain')
+     }
 
   }
 
@@ -109,7 +112,7 @@ class App extends Component {
     e.preventDefault()
     console.log("im in login", user);
     this.getUser(user)
-    this.props.history.push('/userMain')
+
   }
 
   logOUT=()=>{

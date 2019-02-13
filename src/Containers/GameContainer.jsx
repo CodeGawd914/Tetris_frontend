@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TetrisCanvas from '../Components/TetrisCanvas'
 import Conversations from './Conversations'
 import {Grid} from 'semantic-ui-react'
-import Gameroom from './Gameroom'
+import GameRoom from './GameRoom'
 
 class GameContainter extends Component {
 
@@ -15,6 +15,7 @@ class GameContainter extends Component {
                 <TetrisCanvas/>
               </Grid.Column>
               <Grid.Column floated='right' width={5}>
+                <GameRoom user={this.props.user}/>
                 <Conversations user={this.props.user}/>
               </Grid.Column>
             </Grid>

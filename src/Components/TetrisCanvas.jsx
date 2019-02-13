@@ -16,7 +16,7 @@ const createMatrix=(w,h)=> {
 }
 
 class TetrisCanvas extends Component {
-
+// <TetrisCanvas width={20} height={35} matrix={[blah]} pos={TetrisCanvas}
   state ={
     score: 0,
     arena: createMatrix(20, 35),
