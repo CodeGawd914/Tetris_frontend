@@ -65,6 +65,21 @@ class TetrisCanvas extends Component {
     }
   }
 
+  draw=()=> {
+    let ctx = this.refs.canvas.getContext('2d');
+    let arena = this.state.arena
+    ctx.fillStyle ="#000";
+    ctx.fillRect(0,0,500,700)
+    if(this.checkCollision(arena) === false){
+      this.drawMatrix(this.state.matrix,this.state.pos,ctx)
+    } else if (this.checkCollision(arena) === true){
+      this.setState({
+        pos: {...this.state.pos, y: this.state.pos.y-1}
+      },() => this.newDrop() )
+    }
+    this.drawMatrix(arena,{x:0,y:0},ctx)
+  }
+
   mergeBlocks =(arena)=> {
     this.state.matrix.forEach((row,y)=>{
       row.forEach((value,x)=> {
@@ -89,20 +104,6 @@ class TetrisCanvas extends Component {
     },() => this.checkReset(piece))
   }
 
-  draw=()=> {
-    let ctx = this.refs.canvas.getContext('2d');
-    let arena = this.state.arena
-    ctx.fillStyle ="#000";
-    ctx.fillRect(0,0,500,700)
-    if(this.checkCollision(arena) === false){
-      this.drawMatrix(this.state.matrix,this.state.pos,ctx)
-    } else if (this.checkCollision(arena) === true){
-      this.setState({
-        pos: {...this.state.pos, y: this.state.pos.y-1}
-      },() => this.newDrop() )
-    }
-    this.drawMatrix(arena,{x:0,y:0},ctx)
-  }
   // this.drawMatrix(this.state.matrix,this.state.pos,ctx)
 
   playerRotate=()=>{
