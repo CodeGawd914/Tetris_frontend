@@ -7,6 +7,7 @@ class UserScreen extends Component {
   render() {
     console.log(this.props.user);
     return (
+
       <div>
       <Button.Group vertical>
         <Link to="/MultiGame">

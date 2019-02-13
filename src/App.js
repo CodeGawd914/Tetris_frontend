@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TetrisCanvas from './Components/TetrisCanvas'
-import { Route, Switch, withRouter} from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect} from 'react-router-dom'
 import HighScores from './Components/HighScore'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
@@ -131,34 +131,59 @@ class App extends Component {
     return (
       <div className="App">
     {/*<Background/>*/}
-      <Switch>
+      {localStorage.getItem("token")
+       ? <div>
+       <Switch>
+       <Route
+       exact path="/LocalMode"
+       component={TetrisCanvas}/>
+       <Route
+       exact path="/MultiGame"
+       render={()=>
+         <ActionCableProvider url={API_WS_ROOT}>
+         <GameContainer user={this.state.user}/>
+         </ActionCableProvider>
+       }/>
+       <Route
+       exact path="/userMain"
+       render={() => <UserScreen
+         logout={this.logOUT}
+         user={this.state.user}/>
+       }/>
+       <Route exact path="/HighScores" component={HighScores}/>
+       <Route
+       exact path="/SignUp"
+       render={()=> <SignUp SignUpSubmitHandler={this.handleSignUpSubmit}/>
+     }/>
+     <Route
+     exact path="/Login"
+     render={() => <Login loginSubmitHandler={this.loginSubmitHandler}/>
+   }/>
+    <Route  path="/" component={HomeScreen}/>
+    </Switch>
+       </div>
+
+      : <div>
+        <Switch>
       <Route
-      exact path="/LocalMode"
-      component={TetrisCanvas}/>
+       path="/LocalMode" component={TetrisCanvas}/>
       <Route
-      exact path="/MultiGame"
-      render={()=>
-        <ActionCableProvider url={API_WS_ROOT}>
-          <GameContainer user={this.state.user}/>
-        </ActionCableProvider>
+      exact path="/SignUp"
+      render={()=> <SignUp SignUpSubmitHandler={this.handleSignUpSubmit}/>
       }/>
-      <Route
-      exact path="/userMain"
-      render={() => <UserScreen
-        logout={this.logOUT}
-        user={this.state.user}/>
-      }/>
-      <Route
-        exact path="/Login"
-        render={() => <Login loginSubmitHandler={this.loginSubmitHandler}/>
-      }/>
-      <Route
-        exact path="/SignUp"
-        render={()=> <SignUp SignUpSubmitHandler={this.handleSignUpSubmit}/>
-      }/>
-      <Route exact path="/HighScores" component={HighScores}/>
-      <Route exact path="/" component={HomeScreen}/>
-      </Switch>
+    <Route
+    exact path="/Login"
+    render={() => <Login loginSubmitHandler={this.loginSubmitHandler}/>
+  }/>
+
+   <Route  path="/" component={HomeScreen}/>
+
+
+
+
+   </Switch>
+       </div>
+      }
       </div>
     );
   }
