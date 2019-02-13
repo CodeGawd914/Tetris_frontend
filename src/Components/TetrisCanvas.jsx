@@ -37,9 +37,6 @@ class TetrisCanvas extends Component {
     return matrix
   }
 
-  updateScore =()=> {
-    this.setState({})
-  }
 
   checkCollision = ()=> {
     for (let y = 0; y < this.state.matrix.length; ++y){
@@ -55,18 +52,6 @@ class TetrisCanvas extends Component {
     }
     return false
   }
-
-  mergeBlocks =(arena)=> {
-    this.state.matrix.forEach((row,y)=>{
-      row.forEach((value,x)=> {
-        if(value !== 0){
-          arena[y+ this.state.pos.y][x+ this.state.pos.x] = value
-        }
-      })
-    })
-    // this.setState({pos: {...this.state.pos, y: 0}})
-  }
-
   checkReset=()=>{
     if(this.checkCollision(this.state.arena)=== true && this.state.pos.y > -1){
       window.alert("ha ha uyou lose bet you didnt see that coming ")
@@ -79,6 +64,18 @@ class TetrisCanvas extends Component {
       })
     }
   }
+
+  mergeBlocks =(arena)=> {
+    this.state.matrix.forEach((row,y)=>{
+      row.forEach((value,x)=> {
+        if(value !== 0){
+          arena[y+ this.state.pos.y][x+ this.state.pos.x] = value
+        }
+      })
+    })
+    // this.setState({pos: {...this.state.pos, y: 0}})
+  }
+
 
   newDrop=()=>{
     const shapes = ["I","T","O","L","J","Z","S"]
@@ -149,6 +146,15 @@ class TetrisCanvas extends Component {
     }
   }
 
+  updateScore =()=> {
+    this.setState({})
+  }
+  update=(ctx)=>{
+    this.draw()
+    this.dropMatrix(ctx)
+
+  }
+
   updateCanvas=(ctx,arena)=> {
         // let ctx = this.refs.canvas.getContext('2d');
         ctx.fillRect(20, 20, 500, 700)
@@ -165,11 +171,6 @@ class TetrisCanvas extends Component {
       }),300)
     }
 
-    update=(ctx)=>{
-          this.draw()
-          this.dropMatrix(ctx)
-
-    }
 
     playerMove(dir){
       this.setState({pos: {...this.state.pos, x: this.state.pos.x+=dir}},()=> this.draw())
