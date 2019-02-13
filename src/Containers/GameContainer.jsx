@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TetrisCanvas from '../Components/TetrisCanvas'
 import Conversations from './Conversations'
 import {Grid} from 'semantic-ui-react'
+import Gameroom from './Gameroom'
 
 class GameContainter extends Component {
 

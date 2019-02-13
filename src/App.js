@@ -141,7 +141,7 @@ class App extends Component {
        exact path="/MultiGame"
        render={()=>
          <ActionCableProvider url={API_WS_ROOT}>
-         <GameContainer user={this.state.user}/>
+            <GameContainer user={this.state.user}/>
          </ActionCableProvider>
        }/>
        <Route
