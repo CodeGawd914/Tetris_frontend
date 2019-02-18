@@ -8,24 +8,24 @@ class HighScores extends Component {
       <br></br>
       <br></br>
         <Segment  color='red' textAlign='center'>
-          YOUR TOP Scores
+         Top Scores
         </Segment>
       <br></br>
       <br></br>
       <Card.Group itemsPerRow={3}>
     <Card color='yellow'>
       <Segment textAlign='center'>
-        Date: 02/13/2019 Score:7500
+      GAWD  Date: 02/13/2019 Score:7500
       </Segment>
     </Card>
     <Card color='grey'>
       <Segment textAlign='center'>
-        Date: 01/31/2019 Score:4800
+      GAWD  Date: 01/31/2019 Score:4800
       </Segment>
     </Card>
     <Card color='brown'>
       <Segment textAlign='center'>
-        Date: 01/31/2019 Score:4800
+      GAWD Date: 01/31/2019 Score:4800
       </Segment>
     </Card>
 
